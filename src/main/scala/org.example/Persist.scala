@@ -1,6 +1,7 @@
 package org.example
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.storage.StorageLevel
 
 object Persist {
   def main(args:Array[String]): Unit = {
@@ -22,6 +23,9 @@ object Persist {
     val rdd3 = rdd2.cache()
     println("print2")
     println(rdd3.count())
+
+    val dfPersist = rdd.persist(StorageLevel.MEMORY_ONLY)
+
 
   }
 }
